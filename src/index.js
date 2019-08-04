@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 import Header from "./components/Header";
+import CountriesList from "./components/CountriesList";
 
 class App extends React.Component {
   state = {
@@ -16,7 +17,12 @@ class App extends React.Component {
   };
 
   render() {
-    return <Header theme={this.state.theme} toggleTheme={this.toggleTheme} />;
+    return (
+      <div className="app__wrapper">
+        <Header theme={this.state.theme} toggleTheme={this.toggleTheme} />
+        <CountriesList theme={this.state.theme} />
+      </div>
+    );
   }
 }
 
