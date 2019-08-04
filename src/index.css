@@ -12,12 +12,20 @@ html {
 
 #root {
   font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
 }
 
 .app-header {
   display: flex;
   justify-content: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .app-header--dark {
@@ -49,4 +57,62 @@ html {
 
 .app-header__icon {
   margin-right: 20px;
+}
+
+.country-card-light {
+  background-color: #fff;
+}
+
+.country-card-dark {
+  background-color: #2b3743;
+  color: #fff;
+}
+
+.countries-grid-dark {
+  background-color: #202d36;
+}
+
+.countries-grid-light {
+  background-color: #fafafa;
+}
+
+.countries-grid {
+  /* margin-top: 4px; */
+  display: flex;
+  justify-content: center;
+}
+
+.countries-grid__inner {
+  width: 90%;
+  max-width: 1920px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 280px;
+  margin: 40px 60px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.country-card__flag {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.country-card__info {
+  padding: 25px 25px 50px 25px;
+}
+
+.country-card__name {
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.country-card__stats > span {
+  font-weight: 600;
 }
