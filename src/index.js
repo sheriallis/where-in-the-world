@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
 import Header from "./components/Header";
-import CountriesList from "./components/CountriesList";
+import CountriesHome from "./components/CountriesHome";
+import CountryDetail from "./components/CountryDetail";
 
 class App extends React.Component {
   state = {
@@ -19,10 +20,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app__wrapper">
-        <Header theme={this.state.theme} toggleTheme={this.toggleTheme} />
-        <CountriesList theme={this.state.theme} />
-      </div>
+      <Router>
+        <div className="app__wrapper">
+          <Header theme={this.state.theme} toggleTheme={this.toggleTheme} />
+          <Switch>
+            <Route exact path="/" component={CountriesHome} />
+            <Route path="/country/:country" component={CountryDetail} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
