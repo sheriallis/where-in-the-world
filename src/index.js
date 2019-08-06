@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
 import Header from "./components/Header";
-import CountriesHome from "./components/CountriesHome";
-import CountryDetail from "./components/CountryDetail";
+import CountriesHome from "./pages/CountriesHome";
+import CountryDetail from "./pages/CountryDetail";
 
 class App extends React.Component {
   state = {

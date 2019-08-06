@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import CountryCard from "./CountryCard";
+import CountryCard from "../components/CountryCard";
 const axios = require("axios");
 
-function CountriesHome() {
+export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
 
   useEffect(() => {
@@ -33,5 +33,3 @@ function CountriesHome() {
     </div>
   );
 }
-
-export default CountriesHome;
