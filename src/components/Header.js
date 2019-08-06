@@ -1,5 +1,6 @@
 import React from "react";
 import { FaMoon, FaRegMoon } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function SwitchToDark({ toggleTheme }) {
   return (
@@ -23,7 +24,9 @@ function Header({ theme, toggleTheme }) {
   return (
     <header className={`app-header app-header--${theme}`}>
       <div className="app-header__inner">
-        <h1 className="app-title">Where in the world?</h1>
+        <Link to="/">
+          <h1 className="app-title">Where in the world?</h1>
+        </Link>
         {theme === "light" ? (
           <SwitchToDark toggleTheme={toggleTheme} />
         ) : (
