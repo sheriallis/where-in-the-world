@@ -42,7 +42,7 @@ export default function CountryDetail({ match }) {
             <span>Native name:</span> {nativeName}
           </li>
           <li>
-            <span>Population:</span> {population}
+            <span>Population:</span> {population && population.toLocaleString()}
           </li>
           <li>
             <span>Region:</span> {region}

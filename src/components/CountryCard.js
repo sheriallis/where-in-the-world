@@ -11,7 +11,7 @@ function CountryCard({ name, population, region, capital, flag, theme }) {
         </h2>
         <ul>
           <li className="country-card__stats">
-            <span>Population:</span> {population}
+            <span>Population:</span> {population.toLocaleString()}
           </li>
           <li className="country-card__stats">
             <span>Region:</span> {region}
