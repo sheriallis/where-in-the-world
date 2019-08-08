@@ -1,27 +1,66 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Card = styled.div`
+  width: 280px;
+  margin: 40px 60px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: ${props => props.theme.elements};
+  color: ${props => props.theme.fg};
+`;
+
+const CardImg = styled.img`
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+`;
+
+const CardTitle = styled.h2`
+  margin-bottom: 20px;
+  font-weight: 800;
+  a {
+    color: ${props => props.theme.fg};
+  }
+`;
+
+const CardInfoList = styled.ul`
+  list-style: none;
+`;
+
+const CardInfoItem = styled.li`
+  span {
+    font-weight: 600;
+  }
+`;
+
+const CardInfoWrapper = styled.div`
+  padding: 25px 25px 50px 25px;
+`;
 
 function CountryCard({ name, population, region, capital, flag, theme }) {
   return (
-    <div className={`card country-card-${theme}`}>
-      <img src={flag} className="country-card__flag" alt={`flag for ${name}`} />
-      <div className="country-card__info">
-        <h2 className="country-card__name">
+    <Card>
+      <CardImg src={flag} alt={`flag for ${name}`} />
+      <CardInfoWrapper>
+        <CardTitle>
           <Link to={`/country/${name}`}>{name}</Link>
-        </h2>
-        <ul>
-          <li className="country-card__stats">
+        </CardTitle>
+        <CardInfoList>
+          <CardInfoItem>
             <span>Population:</span> {population.toLocaleString()}
-          </li>
-          <li className="country-card__stats">
+          </CardInfoItem>
+          <CardInfoItem>
             <span>Region:</span> {region}
-          </li>
-          <li className="country-card__stats">
+          </CardInfoItem>
+          <CardInfoItem>
             <span>Capital:</span> {capital}
-          </li>
-        </ul>
-      </div>
-    </div>
+          </CardInfoItem>
+        </CardInfoList>
+      </CardInfoWrapper>
+    </Card>
   );
 }
 
