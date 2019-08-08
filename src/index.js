@@ -1,36 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { DarkStyles, LightStyles } from "./styles/Themes";
 import "./index.css";
 
 import Header from "./components/Header";
 import CountriesHome from "./pages/CountriesHome";
 import CountryDetail from "./pages/CountryDetail";
 
-class App extends React.Component {
-  state = {
-    theme: "light"
+function App() {
+  const [lightTheme, setTheme] = useState(true);
+
+  const toggleTheme = () => {
+    setTheme(!lightTheme);
   };
 
-  toggleTheme = () => {
-    this.state.theme === "light"
-      ? this.setState({ theme: "dark" })
-      : this.setState({ theme: "light" });
-  };
-
-  render() {
-    return (
-      <Router>
+  return (
+    <Router>
+      <ThemeProvider theme={lightTheme ? LightStyles : DarkStyles}>
         <div className="app__wrapper">
-          <Header theme={this.state.theme} toggleTheme={this.toggleTheme} />
+          <Header toggleTheme={toggleTheme} lightTheme={lightTheme} />
           <Switch>
             <Route exact path="/" component={CountriesHome} />
             <Route path="/country/:country" component={CountryDetail} />
           </Switch>
         </div>
-      </Router>
-    );
-  }
+      </ThemeProvider>
+    </Router>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
