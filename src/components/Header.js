@@ -25,6 +25,10 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   color: ${props => props.theme.fg};
   font-weight: 800;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ThemeSwitchBtn = styled.div`
