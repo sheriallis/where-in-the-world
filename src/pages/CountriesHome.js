@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from "react";
 import CountryCard from "../components/CountryCard";
+import styled from "styled-components";
 const axios = require("axios");
+
+const CountriesGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: ${props => props.theme.bg};
+`;
+
+const CountriesGridInner = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;
 
 export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
@@ -17,8 +31,8 @@ export default function CountriesHome() {
   };
 
   return (
-    <div className={`countries-grid`}>
-      <div className="countries-grid__inner">
+    <CountriesGrid>
+      <CountriesGridInner>
         {countries.map(country => (
           <CountryCard
             name={country.name}
@@ -29,7 +43,7 @@ export default function CountriesHome() {
             flag={country.flag}
           />
         ))}
-      </div>
-    </div>
+      </CountriesGridInner>
+    </CountriesGrid>
   );
 }
