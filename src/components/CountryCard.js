@@ -13,7 +13,7 @@ const Card = styled.div`
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   background-color: ${props => props.theme.elements};
   color: ${props => props.theme.fg};
-  transition: all 0.3s ease-in;
+  transition: transform 0.2s ease-in;
 `;
 
 const CardImg = styled.img`
