@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Card = styled.div`
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  }
   width: 280px;
   margin: 40px 60px;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   background-color: ${props => props.theme.elements};
   color: ${props => props.theme.fg};
+  transition: all 0.3s ease-in;
 `;
 
 const CardImg = styled.img`
@@ -40,7 +45,7 @@ const CardInfoWrapper = styled.div`
   padding: 25px 25px 50px 25px;
 `;
 
-function CountryCard({ name, population, region, capital, flag, theme }) {
+function CountryCard({ name, population, region, capital, flag }) {
   return (
     <Card>
       <CardImg src={flag} alt={`flag for ${name}`} />
