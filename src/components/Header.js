@@ -36,6 +36,10 @@ const ThemeSwitchBtn = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  p {
+    font-weight: 600;
+  }
+
   .icon {
     margin-right: 20px;
   }
@@ -53,7 +57,7 @@ function ThemeSwitcher({ lightTheme, toggleTheme }) {
       ) : (
         <FaMoon className="icon" />
       )}
-      {lightTheme ? "Dark Mode" : "Light Mode"}
+      <p>{lightTheme ? "Dark Mode" : "Light Mode"}</p>
     </ThemeSwitchBtn>
   );
 }
