@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { DarkStyles, LightStyles } from "./styles/Themes";
-import "./index.css";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
 import Header from "./components/Header";
 import CountriesHome from "./pages/CountriesHome";
@@ -19,13 +19,16 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={lightTheme ? LightStyles : DarkStyles}>
-        <div className="app__wrapper">
-          <Header toggleTheme={toggleTheme} lightTheme={lightTheme} />
-          <Switch>
-            <Route exact path="/" component={CountriesHome} />
-            <Route path="/country/:country" component={CountryDetail} />
-          </Switch>
-        </div>
+        <React.Fragment>
+          <GlobalStyle />
+          <div className="app__wrapper">
+            <Header toggleTheme={toggleTheme} lightTheme={lightTheme} />
+            <Switch>
+              <Route exact path="/" component={CountriesHome} />
+              <Route path="/country/:country" component={CountryDetail} />
+            </Switch>
+          </div>
+        </React.Fragment>
       </ThemeProvider>
     </Router>
   );
