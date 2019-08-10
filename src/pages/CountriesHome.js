@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CountryCard from "../components/CountryCard";
+import Search from "../components/Search";
 import styled from "styled-components";
 const axios = require("axios");
 
 const CountriesGrid = styled.div`
   display: flex;
   justify-content: center;
-  background-color: ${props => props.theme.bg};
 `;
 
 const CountriesGridInner = styled.div`
@@ -31,19 +31,22 @@ export default function CountriesHome() {
   };
 
   return (
-    <CountriesGrid>
-      <CountriesGridInner>
-        {countries.map(country => (
-          <CountryCard
-            name={country.name}
-            key={country.name}
-            population={country.population}
-            region={country.region}
-            capital={country.capital}
-            flag={country.flag}
-          />
-        ))}
-      </CountriesGridInner>
-    </CountriesGrid>
+    <React.Fragment>
+      <Search />
+      <CountriesGrid>
+        <CountriesGridInner>
+          {countries.map(country => (
+            <CountryCard
+              name={country.name}
+              key={country.name}
+              population={country.population}
+              region={country.region}
+              capital={country.capital}
+              flag={country.flag}
+            />
+          ))}
+        </CountriesGridInner>
+      </CountriesGrid>
+    </React.Fragment>
   );
 }
