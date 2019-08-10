@@ -2,6 +2,7 @@ import React from "react";
 import { FaMoon, FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Breakpoints } from "../styles/Breakpoints";
 
 const AppHeader = styled.header`
   display: flex;
@@ -25,9 +26,14 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   color: ${props => props.theme.fg};
   font-weight: 800;
+  font-size: 14px;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (min-width: ${Breakpoints.med}) {
+    font-size: 28px;
   }
 `;
 
@@ -38,6 +44,10 @@ const ThemeSwitchBtn = styled.div`
 
   p {
     font-weight: 600;
+    font-size: 14px;
+    @media (min-width: ${Breakpoints.med}) {
+      font-size: 16px;
+    }
   }
 
   .icon {
