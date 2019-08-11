@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FaChevronDown } from "react-icons/fa";
 import { Breakpoints } from "../styles/Breakpoints";
 
 const StyledRegionFilter = styled.select`
@@ -19,13 +18,21 @@ const StyledRegionFilter = styled.select`
 
 const Wrapper = styled.div`
   position: relative;
-
-  .icon {
+  &::before {
     position: absolute;
+    content: "";
+    border-style: solid;
+    border-color: ${props => props.theme.fg};
+    border-width: 2px 2px 0 0;
+    display: inline-block;
+    height: 6px;
     right: 16px;
-    top: 33%;
+    top: 19px;
+    transform: rotate(135deg);
+    vertical-align: top;
+    width: 0.45em;
     @media (min-width: ${Breakpoints.med}) {
-      top: 16px;
+      top: 25%;
     }
   }
 `;
@@ -39,7 +46,6 @@ export default function FilterRegion() {
         Filter by region:
       </label>
 
-      <FaChevronDown className="icon" />
       <StyledRegionFilter>
         <option value="">Filter by Region</option>
         {region.map(region => (
