@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchInput from "./SearchInput";
-import RegionFilter from "./RegionFilter";
+import RegionSelect from "./RegionSelect";
 
 const SearchArea = styled.div`
   display: flex;
@@ -18,11 +18,11 @@ const SearchArea = styled.div`
   }
 `;
 
-export default function Search() {
+export default function Search({ filterData, filterByRegion }) {
   return (
     <SearchArea>
-      <SearchInput />
-      <RegionFilter />
+      <SearchInput filterData={filterData} />
+      <RegionSelect filterByRegion={filterByRegion} />
     </SearchArea>
   );
 }

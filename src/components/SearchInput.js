@@ -34,20 +34,22 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function SearchInput() {
+export default function SearchInput({ filterData }) {
   return (
     <Wrapper>
-      <label className="sr-only" htmlFor="search">
-        Search for a country
-      </label>
-      <FaSearch className="search-icon" />
-      <StyledInput
-        type="search"
-        id="search"
-        name="search"
-        aria-label="Search for a country"
-        placeholder="Search for a country..."
-      />
+      <form onSubmit={filterData}>
+        <label className="sr-only" htmlFor="search">
+          Search for a country
+        </label>
+        <FaSearch className="search-icon" />
+        <StyledInput
+          type="search"
+          id="search"
+          name="search"
+          aria-label="Search for a country"
+          placeholder="Search for a country..."
+        />
+      </form>
     </Wrapper>
   );
 }

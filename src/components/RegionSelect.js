@@ -37,23 +37,25 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function FilterRegion() {
+export default function RegionSelect({ filterByRegion }) {
   const region = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   return (
     <Wrapper>
-      <label className="sr-only" htmlFor="region-filter">
-        Filter by region:
-      </label>
+      <form>
+        <label className="sr-only" htmlFor="region-filter">
+          Filter by region:
+        </label>
 
-      <StyledRegionFilter>
-        <option value="">Filter by Region</option>
-        {region.map(region => (
-          <option key={region} value={region}>
-            {region}
-          </option>
-        ))}
-      </StyledRegionFilter>
+        <StyledRegionFilter onChange={filterByRegion}>
+          <option value="">Filter by Region</option>
+          {region.map(region => (
+            <option key={region} value={region}>
+              {region}
+            </option>
+          ))}
+        </StyledRegionFilter>
+      </form>
     </Wrapper>
   );
 }

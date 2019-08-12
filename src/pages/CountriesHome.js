@@ -18,6 +18,8 @@ const CountriesGridInner = styled.div`
 
 export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
+  const [countryQuery, setCountryQuery] = useState("");
+  const [regionSelection, setRegionSelection] = useState("");
 
   useEffect(() => {
     getAllCountries();
@@ -30,21 +32,42 @@ export default function CountriesHome() {
     });
   };
 
+  const filterData = e => {
+    e.preventDefault();
+    const query = e.target.elements.search.value;
+    setCountryQuery(query);
+  };
+
+  const filterByRegion = e => {
+    const query = e.currentTarget.value;
+    setRegionSelection(query);
+  };
+
   return (
     <React.Fragment>
-      <Search />
+      <Search filterData={filterData} filterByRegion={filterByRegion} />
       <CountriesGrid>
         <CountriesGridInner>
-          {countries.map(country => (
-            <CountryCard
-              name={country.name}
-              key={country.name}
-              population={country.population}
-              region={country.region}
-              capital={country.capital}
-              flag={country.flag}
-            />
-          ))}
+          {countries &&
+            countries
+              .filter(country =>
+                country.name.toLowerCase().includes(countryQuery.toLowerCase())
+              )
+              .filter(country =>
+                country.region
+                  .toLowerCase()
+                  .includes(regionSelection.toLocaleLowerCase())
+              )
+              .map(country => (
+                <CountryCard
+                  name={country.name}
+                  key={country.name}
+                  population={country.population}
+                  region={country.region}
+                  capital={country.capital}
+                  flag={country.flag}
+                />
+              ))}
         </CountriesGridInner>
       </CountriesGrid>
     </React.Fragment>
