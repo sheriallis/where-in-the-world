@@ -32,10 +32,13 @@ export default function CountriesHome() {
     });
   };
 
-  const filterData = e => {
+  const filterCountries = e => {
+    setCountryQuery(e);
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target.elements.search.value;
-    setCountryQuery(query);
+    setCountryQuery(e.target.elements.search.value);
   };
 
   const filterByRegion = e => {
@@ -45,7 +48,11 @@ export default function CountriesHome() {
 
   return (
     <React.Fragment>
-      <Search filterData={filterData} filterByRegion={filterByRegion} />
+      <Search
+        filterCountries={filterCountries}
+        filterByRegion={filterByRegion}
+        handleSubmit={handleSubmit}
+      />
       <CountriesGrid>
         <CountriesGridInner>
           {countries &&

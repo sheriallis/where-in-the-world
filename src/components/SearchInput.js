@@ -34,10 +34,10 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function SearchInput({ filterData }) {
+export default function SearchInput({ filterCountries, handleSubmit }) {
   return (
     <Wrapper>
-      <form onSubmit={filterData}>
+      <form onSubmit={handleSubmit}>
         <label className="sr-only" htmlFor="search">
           Search for a country
         </label>
@@ -48,6 +48,7 @@ export default function SearchInput({ filterData }) {
           name="search"
           aria-label="Search for a country"
           placeholder="Search for a country..."
+          onChange={e => filterCountries(e.currentTarget.value)}
         />
       </form>
     </Wrapper>

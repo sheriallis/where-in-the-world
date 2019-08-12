@@ -18,10 +18,17 @@ const SearchArea = styled.div`
   }
 `;
 
-export default function Search({ filterData, filterByRegion }) {
+export default function Search({
+  filterCountries,
+  filterByRegion,
+  handleSubmit
+}) {
   return (
     <SearchArea>
-      <SearchInput filterData={filterData} />
+      <SearchInput
+        filterCountries={filterCountries}
+        handleSubmit={handleSubmit}
+      />
       <RegionSelect filterByRegion={filterByRegion} />
     </SearchArea>
   );
