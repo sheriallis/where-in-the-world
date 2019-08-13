@@ -29,7 +29,6 @@ const Wrapper = styled.div`
   .search-icon {
     position: absolute;
     top: 18%;
-    /* top: 33%; */
     left: 16px;
   }
 `;

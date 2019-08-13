@@ -94,9 +94,9 @@ export default function CountryDetail({ match }) {
   }, [countryName]);
 
   const getCountryData = async countryName => {
-    const res = await axios.get(
-      `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true`
-    );
+    const API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders`;
+
+    const res = await axios.get(API_URL);
     const countryData = res.data[0];
 
     setCountryData(countryData);

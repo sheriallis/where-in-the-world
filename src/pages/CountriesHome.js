@@ -26,7 +26,9 @@ export default function CountriesHome() {
   }, []);
 
   const getAllCountries = () => {
-    axios.get(`https://restcountries.eu/rest/v2/all`).then(res => {
+    const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag`;
+
+    axios.get(API_URL).then(res => {
       const countries = res.data;
       setCountryData(countries);
     });
