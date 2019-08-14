@@ -95,7 +95,16 @@ export default function CountryDetail({ match }) {
   }, [countryName]);
 
   const getCountryData = async countryName => {
-    const API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders`;
+    let API_URL;
+    const FILTER_PARAMS =
+      "?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
+
+    // Check if countryName is a 2-letter or 3-letter country code
+    if (/[A-Z]{2,3}/.test(countryName)) {
+      API_URL = `https://restcountries.eu/rest/v2/alpha?codes=${countryName};${FILTER_PARAMS}`;
+    } else {
+      API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true${FILTER_PARAMS}`;
+    }
 
     const res = await axios.get(API_URL);
     const countryData = res.data[0];
@@ -164,7 +173,7 @@ export default function CountryDetail({ match }) {
               <h3>Border Countries: </h3>
               {borders &&
                 borders.splice(0, 3).map(country => (
-                  <Link to={`/country/${country}`}>
+                  <Link key={country} to={`/country/${country}`}>
                     <Button text={country} />
                   </Link>
                 ))}
