@@ -21,6 +21,7 @@ box-sizing: border-box;
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 
