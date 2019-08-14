@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
+import { IoMdArrowBack } from "react-icons/io";
 import styled from "styled-components";
 import Button from "../components/Button";
 const axios = require("axios");
@@ -120,7 +121,7 @@ export default function CountryDetail({ match }) {
     <CountryDetailSection>
       <Wrapper>
         <Link to="/">
-          <Button text={"Back"} />
+          <Button icon={<IoMdArrowBack className="icon" />} text={"Back"} />
         </Link>
         <CountryData>
           <CountryFlag src={flag} alt={`flag for ${name}`} />
