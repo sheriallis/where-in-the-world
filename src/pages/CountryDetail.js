@@ -163,7 +163,11 @@ export default function CountryDetail({ match }) {
             <BorderCountries>
               <h3>Border Countries: </h3>
               {borders &&
-                borders.splice(0, 3).map(country => <Button text={country} />)}
+                borders.splice(0, 3).map(country => (
+                  <Link to={`/country/${country}`}>
+                    <Button text={country} />
+                  </Link>
+                ))}
             </BorderCountries>
           </CountryInfo>
         </CountryData>
