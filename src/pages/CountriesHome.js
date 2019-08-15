@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CountryCard from "../components/CountryCard";
+// import CountryCard from "../components/CountryCard";
 import Search from "../components/Search";
 import styled from "styled-components";
+import Loading from "../components/Loading";
+import CountryList from "../components/CountryList";
 const axios = require("axios");
 
 const CountriesGrid = styled.div`
@@ -18,21 +20,20 @@ const CountriesGridInner = styled.div`
 
 export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
+  const [loading, setLoadingState] = useState(false);
   const [countryQuery, setCountryQuery] = useState("");
   const [regionSelection, setRegionSelection] = useState("");
 
   useEffect(() => {
+    const getAllCountries = async () => {
+      const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag`;
+      setLoadingState(true);
+      const res = await axios.get(API_URL);
+      setCountryData(res.data);
+      setLoadingState(false);
+    };
     getAllCountries();
   }, []);
-
-  const getAllCountries = () => {
-    const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag`;
-
-    axios.get(API_URL).then(res => {
-      const countries = res.data;
-      setCountryData(countries);
-    });
-  };
 
   const filterCountries = e => {
     setCountryQuery(e);
@@ -57,26 +58,15 @@ export default function CountriesHome() {
       />
       <CountriesGrid>
         <CountriesGridInner>
-          {countries &&
-            countries
-              .filter(country =>
-                country.name.toLowerCase().includes(countryQuery.toLowerCase())
-              )
-              .filter(country =>
-                country.region
-                  .toLowerCase()
-                  .includes(regionSelection.toLocaleLowerCase())
-              )
-              .map(country => (
-                <CountryCard
-                  name={country.name}
-                  key={country.name}
-                  population={country.population}
-                  region={country.region}
-                  capital={country.capital}
-                  flag={country.flag}
-                />
-              ))}
+          {loading === true ? (
+            <Loading />
+          ) : (
+            <CountryList
+              countries={countries}
+              countryQuery={countryQuery}
+              regionSelection={regionSelection}
+            />
+          )}
         </CountriesGridInner>
       </CountriesGrid>
     </React.Fragment>
