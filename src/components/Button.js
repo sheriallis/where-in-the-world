@@ -9,6 +9,7 @@ const StyledButton = styled.span`
   background-color: ${props => props.theme.elements};
   color: ${props => props.theme.fg};
   margin-right: 16px;
+  margin-bottom: 16px;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
