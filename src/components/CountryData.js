@@ -2,29 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/Button";
+import { Breakpoints } from "../styles/Breakpoints";
 
 const CountryFlag = styled.img`
   width: 100%;
   max-width: 600px;
   object-fit: cover;
-  margin-top: 60px;
   margin-bottom: 40px;
+
+  @media (min-width: ${Breakpoints.large}) {
+    margin-bottom: 0px;
+  }
 `;
 
 const CountryTitle = styled.h2`
   font-weight: 800;
   margin-bottom: 24px;
-  @media (min-width: 1440px) {
+  @media (min-width: ${Breakpoints.large}) {
     grid-column: 1 / 3;
   }
 `;
 
 const CountryInfo = styled.div`
-  @media (min-width: 1440px) {
+  @media (min-width: ${Breakpoints.large}) {
     display: grid;
-    grid-template-rows: 60px 1fr 1fr;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 60px;
+    grid-column-gap: 20px;
     margin-left: 60px;
   }
 `;
@@ -36,7 +38,7 @@ const CountryInfoList = styled.ul`
   span {
     font-weight: 600;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: ${Breakpoints.large}) {
     margin-right: 90px;
   }
 `;
@@ -50,33 +52,38 @@ const BorderCountries = styled.div`
   a {
     margin-right: 16px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: ${Breakpoints.large}) {
     grid-row: 3 / 4;
     grid-column: 1 / 3;
   }
 `;
 
 const StyledCountryData = styled.div`
-  @media (min-width: 1440px) {
+  margin-top: 40px;
+
+  @media (min-width: ${Breakpoints.large}) {
+    margin-top: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 `;
 
-export default function CountryData({
-  name,
-  flag,
-  nativeName,
-  population,
-  region,
-  subregion,
-  capital,
-  topLevelDomain,
-  currencies,
-  languages,
-  borders
-}) {
+export default function CountryData({ country }) {
+  const {
+    name,
+    flag,
+    nativeName,
+    population,
+    region,
+    subregion,
+    capital,
+    topLevelDomain,
+    currencies,
+    languages,
+    borders
+  } = country;
+
   return (
     <StyledCountryData>
       <CountryFlag src={flag} alt={`flag for ${name}`} />
