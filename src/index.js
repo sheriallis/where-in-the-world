@@ -8,6 +8,7 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import Header from "./components/Header";
 import CountriesHome from "./pages/CountriesHome";
 import CountryDetail from "./pages/CountryDetail";
+import { NotFound } from "./pages/Error";
 
 function App() {
   const [lightTheme, setTheme] = useState(true);
@@ -26,6 +27,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={CountriesHome} />
               <Route path="/country/:country" component={CountryDetail} />
+              <Route component={NotFound} />
             </Switch>
           </div>
         </React.Fragment>

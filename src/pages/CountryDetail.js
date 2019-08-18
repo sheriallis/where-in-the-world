@@ -5,6 +5,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import styled from "styled-components";
 import Button from "../components/Button";
 import CountryData from "../components/CountryData";
+import Loading from "../components/Loading";
+import { NotFound } from "../pages/Error";
 const axios = require("axios");
 
 const CountryDetailSection = styled.section`
@@ -27,49 +29,41 @@ const Wrapper = styled.div`
 `;
 
 export default function CountryDetail({ match }) {
+  let API_URL;
+  const FILTER_PARAMS =
+    "?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
+
   const [country, setCountryData] = useState({});
   const [error, setError] = useState(false);
+  const [loading, setLoadingState] = useState(false);
   const countryName = match.params.country;
 
+  // Check if countryName is a 2-letter or 3-letter country code
+  if (/^[A-Z]{2,3}/.test(countryName)) {
+    API_URL = `https://restcountries.eu/rest/v2/alpha?codes=${countryName};${FILTER_PARAMS}`;
+  } else {
+    API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true${FILTER_PARAMS}`;
+  }
+
   useEffect(() => {
-    getCountryData(countryName);
-  }, [countryName]);
+    const getCountryData = async () => {
+      setLoadingState(true);
 
-  const getCountryData = async countryName => {
-    let API_URL;
-    const FILTER_PARAMS =
-      "?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
+      try {
+        const res = await axios.get(API_URL);
+        if (res.status === "400") {
+          throw new Error();
+        }
+        setCountryData(res.data[0]);
+        setLoadingState(false);
+      } catch (error) {
+        setError(true);
+        setLoadingState(false);
+      }
+    };
 
-    // Check if countryName is a 2-letter or 3-letter country code
-    if (/[A-Z]{2,3}/.test(countryName)) {
-      API_URL = `https://restcountries.eu/rest/v2/alpha?codes=${countryName};${FILTER_PARAMS}`;
-    } else {
-      API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true${FILTER_PARAMS}`;
-    }
-
-    try {
-      const res = await axios.get(API_URL);
-      const countryData = res.data[0];
-
-      setCountryData(countryData);
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  const {
-    name,
-    flag,
-    nativeName,
-    population,
-    region,
-    subregion,
-    capital,
-    topLevelDomain,
-    currencies,
-    languages,
-    borders
-  } = country;
+    getCountryData();
+  }, [API_URL]);
 
   return (
     <CountryDetailSection>
@@ -77,19 +71,13 @@ export default function CountryDetail({ match }) {
         <Link to="/">
           <Button icon={<IoMdArrowBack className="icon" />} text={"Back"} />
         </Link>
-        <CountryData
-          name={name}
-          flag={flag}
-          nativeName={nativeName}
-          population={population}
-          region={region}
-          subregion={subregion}
-          capital={capital}
-          topLevelDomain={topLevelDomain}
-          currencies={currencies}
-          languages={languages}
-          borders={borders}
-        />
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          error && <NotFound text={"Country not found"} />
+        ) : (
+          country && <CountryData country={country} />
+        )}
       </Wrapper>
     </CountryDetailSection>
   );
