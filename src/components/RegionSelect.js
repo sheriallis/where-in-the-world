@@ -47,7 +47,11 @@ export default function RegionSelect({ filterByRegion }) {
           Filter by region:
         </label>
 
-        <StyledRegionFilter onChange={filterByRegion}>
+        <StyledRegionFilter
+          onChange={filterByRegion}
+          id="region-filter"
+          name="region-filter"
+        >
           <option value="">Filter by Region</option>
           {region.map(region => (
             <option key={region} value={region}>
