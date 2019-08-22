@@ -49,7 +49,7 @@ const CardInfoWrapper = styled.div`
 function CountryCard({ name, population, region, capital, flag }) {
   return (
     <Card>
-      <LazyLoad height={160}>
+      <LazyLoad height={160} offset={100} once>
         <CardImg src={flag} alt={`flag for ${name}`} />
       </LazyLoad>
       <CardInfoWrapper>
