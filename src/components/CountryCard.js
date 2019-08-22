@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazyload";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -48,7 +49,9 @@ const CardInfoWrapper = styled.div`
 function CountryCard({ name, population, region, capital, flag }) {
   return (
     <Card>
-      <CardImg src={flag} alt={`flag for ${name}`} />
+      <LazyLoad height={160}>
+        <CardImg src={flag} alt={`flag for ${name}`} />
+      </LazyLoad>
       <CardInfoWrapper>
         <CardTitle>
           <Link to={`/country/${name}`}>{name}</Link>
