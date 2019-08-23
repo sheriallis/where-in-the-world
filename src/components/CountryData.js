@@ -1,14 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Button from "../components/Button";
 import { Breakpoints } from "../styles/Breakpoints";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1
+  }
+`;
 
 const CountryFlag = styled.img`
   width: 100%;
   max-width: 600px;
   object-fit: cover;
   margin-bottom: 40px;
+  animation: ${fadeIn} 0.2s ease-in;
 
   @media (min-width: ${Breakpoints.large}) {
     margin-bottom: 0px;
@@ -60,6 +71,7 @@ const BorderCountries = styled.div`
 
 const StyledCountryData = styled.div`
   margin-top: 40px;
+  animation: ${fadeIn} 0.4s ease-in;
 
   @media (min-width: ${Breakpoints.large}) {
     margin-top: 60px;
