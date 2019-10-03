@@ -135,11 +135,15 @@ export default function CountryData({ country }) {
         <BorderCountries>
           <h3>Border Countries: </h3>
           {borders &&
-            borders.splice(0, 3).map(country => (
-              <Link key={country} to={`/country/${country}`}>
-                <Button text={country} />
-              </Link>
-            ))}
+            borders
+              .filter((country, index) => {
+                return index < 4;
+              })
+              .map(country => (
+                <Link key={country} to={`/country/${country}`}>
+                  <Button text={country} />
+                </Link>
+              ))}
         </BorderCountries>
       </CountryInfo>
     </StyledCountryData>
