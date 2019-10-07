@@ -5,10 +5,10 @@ import { ThemeProvider } from "styled-components";
 import { DarkStyles, LightStyles } from "./styles/Themes";
 import { GlobalStyle } from "./styles/GlobalStyle";
 
-import Header from "./components/Header";
-import CountriesHome from "./pages/CountriesHome";
-import CountryDetail from "./pages/CountryDetail";
-import { NotFound } from "./pages/Error";
+import Header from "./components/Header/Header";
+import CountriesHome from "./pages/CountriesHome/CountriesHome";
+import CountryDetail from "./pages/CountryDetail/CountryDetail";
+import { NotFound } from "./pages/Error/Error";
 
 function App() {
   const [lightTheme, setTheme] = useState(true);

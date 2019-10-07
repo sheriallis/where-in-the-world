@@ -1,34 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../index.css";
+import { withRouter } from "react-router-dom";
+
+import "../../index.css";
 import { IoMdArrowBack } from "react-icons/io";
-import styled from "styled-components";
-import Button from "../components/Button";
-import CountryData from "../components/CountryData";
-import Loading from "../components/Loading";
-import { NotFound } from "../pages/Error";
+import Button from "../../components/Button/Button";
+import CountryData from "../../components/CountryData/CountryData";
+import Loading from "../../components/Loading/Loading";
+import { NotFound } from "../Error/Error";
+
+import { CountryDetailSection, Wrapper } from "./CountryDetail.styles";
+
 const axios = require("axios");
 
-const CountryDetailSection = styled.section`
-  display: flex;
-  justify-content: center;
-  background-color: ${props => props.theme.bg};
-  color: ${props => props.theme.fg};
-  height: calc(100vh - 93px);
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  padding: 16px;
-
-  a {
-    margin-top: 60px;
-  }
-`;
-
-export default function CountryDetail({ match }) {
+function CountryDetail({ match, history }) {
   let API_URL;
   const FILTER_PARAMS =
     "?fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
@@ -68,9 +52,11 @@ export default function CountryDetail({ match }) {
   return (
     <CountryDetailSection>
       <Wrapper>
-        <Link to="/">
-          <Button icon={<IoMdArrowBack className="icon" />} text={"Back"} />
-        </Link>
+        <Button
+          icon={<IoMdArrowBack className="icon" />}
+          text={"Back"}
+          onClick={() => history.goBack()}
+        />
         {loading ? (
           <Loading />
         ) : error ? (
@@ -82,3 +68,5 @@ export default function CountryDetail({ match }) {
     </CountryDetailSection>
   );
 }
+
+export default withRouter(CountryDetail);

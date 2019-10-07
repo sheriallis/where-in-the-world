@@ -1,8 +1,7 @@
 // Spinner CSS by @tobiasahlin (https://tobiasahlin.com/spinkit/)
-import React from "react";
 import styled from "styled-components";
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   margin: 100px auto;
   width: 40px;
   height: 40px;
@@ -42,12 +41,3 @@ const Spinner = styled.div`
     }
   }
 `;
-
-export default function Loading() {
-  return (
-    <Spinner>
-      <div className="cube1" />
-      <div className="cube2" />
-    </Spinner>
-  );
-}

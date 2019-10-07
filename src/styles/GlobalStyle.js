@@ -27,7 +27,7 @@ a {
 
   body {
     background-color: ${props => props.theme.bg};
-    color: ${props => props.theme.fg}
+    color: ${props => props.theme.fg};
   }
 
   .sr-only {

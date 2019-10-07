@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import CountryCard from "../components/CountryCard";
-import Search from "../components/Search";
-import styled from "styled-components";
-import Loading from "../components/Loading";
-import CountryList from "../components/CountryList";
+import Search from "../../components/Search/Search";
+import Loading from "../../components/Loading/Loading";
+import CountryList from "../../components/CountryList/CountryList";
+
+import { CountriesGrid, CountriesGridInner } from "./CountriesHome.styles";
+
 const axios = require("axios");
-
-const CountriesGrid = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const CountriesGridInner = styled.div`
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-`;
 
 export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
