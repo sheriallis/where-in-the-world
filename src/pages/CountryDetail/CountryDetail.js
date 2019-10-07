@@ -52,11 +52,13 @@ function CountryDetail({ match, history }) {
   return (
     <CountryDetailSection>
       <Wrapper>
-        <Button
-          icon={<IoMdArrowBack className="icon" />}
-          text={"Back"}
-          onClick={() => history.goBack()}
-        />
+        <div>
+          <Button
+            icon={<IoMdArrowBack className="icon" />}
+            text={"Back"}
+            onClick={() => history.goBack()}
+          />
+        </div>
         {loading ? (
           <Loading />
         ) : error ? (

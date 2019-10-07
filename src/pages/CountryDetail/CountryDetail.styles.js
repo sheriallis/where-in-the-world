@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   font-size: 16px;
   padding: 16px;
+  margin-top: 30px;
 
   a {
     margin-top: 60px;
