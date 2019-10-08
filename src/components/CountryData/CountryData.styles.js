@@ -51,21 +51,6 @@ export const CountryInfoList = styled.ul`
   }
 `;
 
-export const BorderCountries = styled.div`
-  h3 {
-    margin-bottom: 30px;
-    font-size: 15px;
-  }
-
-  a {
-    margin-right: 16px;
-  }
-  @media (min-width: ${Breakpoints.large}) {
-    grid-row: 3 / 4;
-    grid-column: 1 / 3;
-  }
-`;
-
 export const StyledCountryData = styled.div`
   margin-top: 40px;
   animation: ${fadeIn} 0.4s ease-in;
