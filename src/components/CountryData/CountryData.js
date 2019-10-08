@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../Button/Button";
+import BorderCountries from "../BorderCountries/BorderCountries";
 
 import {
   CountryFlag,
   CountryTitle,
   CountryInfo,
   CountryInfoList,
-  BorderCountries,
+  // BorderCountries,
   StyledCountryData
 } from "./CountryData.styles";
 
@@ -62,19 +61,7 @@ export default function CountryData({ country }) {
             {languages && languages.map(language => language.name).join(", ")}
           </li>
         </CountryInfoList>
-        <BorderCountries>
-          <h3>Border Countries: </h3>
-          {borders &&
-            borders
-              .filter((country, index) => {
-                return index < 4;
-              })
-              .map(country => (
-                <Link key={country} to={`/country/${country}`}>
-                  <Button text={country} />
-                </Link>
-              ))}
-        </BorderCountries>
+        {borders && borders.length > 0 && <BorderCountries borders={borders} />}
       </CountryInfo>
     </StyledCountryData>
   );
