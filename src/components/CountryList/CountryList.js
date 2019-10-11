@@ -25,6 +25,7 @@ export default function CountryList({
           region={country.region}
           capital={country.capital}
           flag={country.flag}
+          countryQuery={countryQuery}
         />
       ))
   );
