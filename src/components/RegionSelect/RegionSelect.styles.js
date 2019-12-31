@@ -8,7 +8,7 @@ export const StyledRegionFilter = styled.select`
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 8px;
-  appearance: button;
+  appearance: none;
   width: 100%;
   @media (min-width: 817px) {
     width: auto;
