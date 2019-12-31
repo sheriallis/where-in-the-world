@@ -34,7 +34,6 @@ export const CountryTitle = styled.h2`
 export const CountryInfo = styled.div`
   @media (min-width: ${Breakpoints.large}) {
     display: grid;
-    grid-column-gap: 20px;
     margin-left: 60px;
   }
 `;
