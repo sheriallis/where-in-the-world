@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import "./BorderCountries.styles";
-import Button from "../Button/Button";
-import { StyledBorderCountries } from "./BorderCountries.styles";
+import { StyledBorderCountries, StyledLink } from "./BorderCountries.styles";
 
 export default function BorderCountries({ borders }) {
   return (
@@ -14,9 +12,9 @@ export default function BorderCountries({ borders }) {
           return index < 4;
         })
         .map(country => (
-          <Link key={country} to={`/country/${country}`}>
-            <Button text={country} />
-          </Link>
+          <StyledLink key={country} to={`/country/${country}`}>
+            {country}
+          </StyledLink>
         ))}
     </StyledBorderCountries>
   );
