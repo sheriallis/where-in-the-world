@@ -53,11 +53,10 @@ function CountryDetail({ match, history }) {
     <CountryDetailSection>
       <Wrapper>
         <div>
-          <Button
-            icon={<IoMdArrowBack className="icon" />}
-            text={"Back"}
-            onClick={() => history.goBack()}
-          />
+          <Button onClick={() => history.goBack()}>
+            <IoMdArrowBack className="icon" />
+            Back
+          </Button>
         </div>
         {loading ? (
           <Loading />
