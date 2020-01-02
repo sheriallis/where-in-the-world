@@ -24,11 +24,13 @@ function App() {
           <GlobalStyle />
           <div className="app__wrapper">
             <Header toggleTheme={toggleTheme} lightTheme={lightTheme} />
-            <Switch>
-              <Route exact path="/" component={CountriesHome} />
-              <Route path="/country/:country" component={CountryDetail} />
-              <Route component={NotFound} />
-            </Switch>
+            <main>
+              <Switch>
+                <Route exact path="/" component={CountriesHome} />
+                <Route path="/country/:country" component={CountryDetail} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
           </div>
         </React.Fragment>
       </ThemeProvider>
