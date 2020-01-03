@@ -14,8 +14,11 @@ export const StyledButton = styled.button`
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.2s ease-in-out;
 
   &:hover {
+    background-color: ${props => props.theme.hoverBg};
+    color: ${props => props.theme.hoverFg};
     cursor: pointer;
   }
 
