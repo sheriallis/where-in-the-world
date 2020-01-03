@@ -6,13 +6,13 @@ import { AppHeader, Wrapper, Title, ThemeSwitchBtn } from "./Header.styles";
 
 function ThemeSwitcher({ lightTheme, toggleTheme }) {
   return (
-    <ThemeSwitchBtn onClick={toggleTheme}>
+    <ThemeSwitchBtn onClick={toggleTheme} tabIndex="0">
       {lightTheme ? (
         <FaRegMoon className="icon" />
       ) : (
         <FaMoon className="icon" />
       )}
-      <p>{lightTheme ? "Dark Mode" : "Light Mode"}</p>
+      {lightTheme ? "Dark Mode" : "Light Mode"}
     </ThemeSwitchBtn>
   );
 }

@@ -34,17 +34,17 @@ export const Title = styled.h1`
   }
 `;
 
-export const ThemeSwitchBtn = styled.div`
+export const ThemeSwitchBtn = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: ${props => props.theme.fg};
+  background: none;
+  border: none;
+  font-size: 14px;
 
-  p {
-    font-weight: 600;
-    font-size: 14px;
-    @media (min-width: ${Breakpoints.med}) {
-      font-size: 16px;
-    }
+  @media (min-width: ${Breakpoints.med}) {
+    font-size: 16px;
   }
 
   .icon {
