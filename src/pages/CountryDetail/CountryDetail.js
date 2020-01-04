@@ -19,7 +19,7 @@ function CountryDetail({ match, history }) {
 
   const [country, setCountryData] = useState({});
   const [error, setError] = useState(false);
-  const [loading, setLoadingState] = useState(false);
+  const [loading, setLoadingState] = useState(true);
   const countryName = match.params.country;
 
   // Check if countryName is a 2-letter or 3-letter country code
@@ -31,8 +31,6 @@ function CountryDetail({ match, history }) {
 
   useEffect(() => {
     const getCountryData = async () => {
-      setLoadingState(true);
-
       try {
         const res = await axios.get(API_URL);
         if (res.status === "400") {
@@ -53,10 +51,12 @@ function CountryDetail({ match, history }) {
     <CountryDetailSection>
       <Wrapper>
         <div>
-          <Button onClick={() => history.goBack()}>
-            <IoMdArrowBack className="icon" />
-            Back
-          </Button>
+          {!loading && (
+            <Button onClick={() => history.goBack()}>
+              <IoMdArrowBack className="icon" />
+              Back
+            </Button>
+          )}
         </div>
         {loading ? (
           <Loading />

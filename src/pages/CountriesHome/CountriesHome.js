@@ -9,14 +9,13 @@ const axios = require("axios");
 
 export default function CountriesHome() {
   const [countries, setCountryData] = useState([]);
-  const [loading, setLoadingState] = useState(false);
+  const [loading, setLoadingState] = useState(true);
   const [countryQuery, setCountryQuery] = useState("");
   const [regionSelection, setRegionSelection] = useState("");
 
   useEffect(() => {
     const getAllCountries = async () => {
       const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag`;
-      setLoadingState(true);
       const res = await axios.get(API_URL);
       setCountryData(res.data);
       setLoadingState(false);
