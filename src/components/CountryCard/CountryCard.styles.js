@@ -6,7 +6,7 @@ export const Card = styled.div`
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   }
   width: 280px;
-  margin: 40px 20px;
+  margin: 35px 15px;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   background-color: ${props => props.theme.elements};

@@ -13,21 +13,13 @@ import { CountryDetailSection, Wrapper } from "./CountryDetail.styles";
 const axios = require("axios");
 
 function CountryDetail({ match, history }) {
-  let API_URL;
-  const FILTER_PARAMS =
-    "fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
-
   const [country, setCountryData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoadingState] = useState(true);
+  const FILTER_PARAMS =
+    "fields=name;flag;nativeName;population;region;subregion;capital;topLevelDomain;currencies;languages;borders";
   const countryName = match.params.country;
-
-  // Check if countryName is a 2-letter or 3-letter country code
-  if (/^[A-Z]{2,3}/.test(countryName)) {
-    API_URL = `https://restcountries.eu/rest/v2/alpha?codes=${countryName}&${FILTER_PARAMS}`;
-  } else {
-    API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true&${FILTER_PARAMS}`;
-  }
+  let API_URL = `https://restcountries.eu/rest/v2/name/${countryName}?fullText=true&${FILTER_PARAMS}`;
 
   useEffect(() => {
     const getCountryData = async () => {

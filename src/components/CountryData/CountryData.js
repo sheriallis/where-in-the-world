@@ -1,14 +1,34 @@
 import React from "react";
-import BorderCountries from "../BorderCountries/BorderCountries";
 
 import {
   CountryFlag,
   CountryTitle,
   CountryInfo,
   CountryInfoList,
-  // BorderCountries,
-  StyledCountryData
+  StyledCountryData,
+  StyledBorderCountries,
+  StyledLink,
+  BorderCountriesTitle
 } from "./CountryData.styles";
+
+import COUNTRYCODES from "../../countrycodes";
+
+function BorderCountries({ borders }) {
+  return (
+    <StyledBorderCountries>
+      <BorderCountriesTitle>Border Countries: </BorderCountriesTitle>
+      {borders
+        .filter((country, index) => {
+          return index < 4;
+        })
+        .map(country => (
+          <StyledLink key={country} to={`/country/${COUNTRYCODES[country]}`}>
+            {COUNTRYCODES[country]}
+          </StyledLink>
+        ))}
+    </StyledBorderCountries>
+  );
+}
 
 export default function CountryData({ country }) {
   const {

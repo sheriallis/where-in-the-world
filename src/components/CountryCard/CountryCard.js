@@ -12,20 +12,15 @@ import {
   CardInfoWrapper
 } from "./CountryCard.styles";
 
-function CountryCard({
-  name,
-  population,
-  region,
-  capital,
-  flag,
-  countryQuery
-}) {
+function CountryCard({ country, countryQuery }) {
   useEffect(() => {
     /* manually trigger checking for elements in viewport bacause the LazyLoad components enter the viewport without resize or scroll events when a search query is entered */
     if (countryQuery.length > 0) {
       forceCheck();
     }
   });
+
+  const { name, population, region, capital, flag } = country;
 
   return (
     <Link to={`/country/${name}`}>

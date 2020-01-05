@@ -15,7 +15,7 @@ export const sharedButtonStyles = css`
 export const StyledButton = styled.button`
   ${sharedButtonStyles}
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   margin-right: 16px;
   margin-bottom: 16px;
   display: inline-flex;

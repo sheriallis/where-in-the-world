@@ -19,12 +19,8 @@ export default function CountryList({
       )
       .map(country => (
         <CountryCard
-          name={country.name}
           key={country.name}
-          population={country.population}
-          region={country.region}
-          capital={country.capital}
-          flag={country.flag}
+          country={country}
           countryQuery={countryQuery}
         />
       ))

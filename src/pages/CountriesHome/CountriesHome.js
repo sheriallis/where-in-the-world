@@ -15,7 +15,7 @@ export default function CountriesHome() {
 
   useEffect(() => {
     const getAllCountries = async () => {
-      const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag`;
+      const API_URL = `https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag;alpha3Code`;
       const res = await axios.get(API_URL);
       setCountryData(res.data);
       setLoadingState(false);
