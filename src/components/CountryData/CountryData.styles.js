@@ -79,11 +79,14 @@ export const StyledBorderCountries = styled.div`
 `;
 
 export const BorderCountriesTitle = styled.h3`
-  h3 {
-    margin-bottom: 30px;
-    font-size: 15px;
-    margin-right: 16px;
-  }
+  margin-bottom: 30px;
+  font-size: 15px;
+  margin-right: 16px;
+`;
+
+export const BorderCountriesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export const StyledLink = styled(Link)`
@@ -91,6 +94,8 @@ export const StyledLink = styled(Link)`
   padding: 6px 24px;
   font-weight: 600;
   margin: 0 16px 16px 0;
+  min-width: 95px;
+  text-align: center;
 
   &:hover {
     background-color: ${props => props.theme.hoverBg};

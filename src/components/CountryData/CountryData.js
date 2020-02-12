@@ -8,7 +8,8 @@ import {
   StyledCountryData,
   StyledBorderCountries,
   StyledLink,
-  BorderCountriesTitle
+  BorderCountriesTitle,
+  BorderCountriesContainer
 } from "./CountryData.styles";
 
 import COUNTRYCODES from "../../countrycodes";
@@ -17,15 +18,17 @@ function BorderCountries({ borders }) {
   return (
     <StyledBorderCountries>
       <BorderCountriesTitle>Border Countries: </BorderCountriesTitle>
-      {borders
-        .filter((country, index) => {
-          return index < 4;
-        })
-        .map(country => (
-          <StyledLink key={country} to={`/country/${COUNTRYCODES[country]}`}>
-            {COUNTRYCODES[country]}
-          </StyledLink>
-        ))}
+      <BorderCountriesContainer>
+        {borders
+          .filter((country, index) => {
+            return index < 4;
+          })
+          .map(country => (
+            <StyledLink key={country} to={`/country/${COUNTRYCODES[country]}`}>
+              {COUNTRYCODES[country]}
+            </StyledLink>
+          ))}
+      </BorderCountriesContainer>
     </StyledBorderCountries>
   );
 }
